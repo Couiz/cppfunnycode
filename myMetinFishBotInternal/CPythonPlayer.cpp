@@ -1,4 +1,5 @@
 #include "CPythonPlayer.h"
+#include "CPatternScan.h"
 #include "Utils.h"
 
 #define NICKNAME_OFFSET 0x14

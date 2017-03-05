@@ -8,6 +8,7 @@
 #include "CPythonPlayer.h"
 #include "wintoastlib.h"
 #include "Hooks.h"
+#include "CPatternScan.h"
 #include "Utils.h"
 
 CPythonChat* g_pPythonChat;
