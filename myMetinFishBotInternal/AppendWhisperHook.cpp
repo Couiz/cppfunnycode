@@ -4,17 +4,9 @@
 #include "wintoastlib.h"
 #include "CPythonPlayer.h"
 #include "CPythonChat.h"
+#include "Utils.h"
 
 using namespace WinToastLib;
-
-std::wstring StringToWString(const std::string& str)
-{
-	int size_needed = MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), NULL, 0);
-	std::wstring wstrTo(size_needed, 0);
-	MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), &wstrTo[0], size_needed);
-	return wstrTo;
-}
-
 
 AppendWhisperFn orgAppendWhisper;
 void __fastcall hkdAppendWhisper(void* pThis, int edx, int iType, const char * c_szChat)
@@ -28,7 +20,7 @@ void __fastcall hkdAppendWhisper(void* pThis, int edx, int iType, const char * c
 		return;
 	}
 
-	std::wstring wText = StringToWString(c_szChat);
+	std::wstring wText = Utils::StringToWString(c_szChat);
 
 	WinToastTemplate templ = WinToastTemplate(WinToastTemplate::TextTwoLines);
 	templ.setTextField(L"Szept", WinToastTemplate::TextField::FirstLine);
